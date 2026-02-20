@@ -60,6 +60,7 @@ arch() {
         armv7* | armv7 | arm) echo 'armv7' ;;
         armv6* | armv6) echo 'armv6' ;;
         armv5* | armv5) echo 'armv5' ;;
+        mips | mips32 | mipsbe | mips32be) echo 'mips' ;;
         s390x) echo 's390x' ;;
         *) echo -e "${red}Unsupported CPU architecture!${plain}" && rm -f "${cur_dir}/${script_name}" >/dev/null 2>&1 && exit 2;;
     esac
