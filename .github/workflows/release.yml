@@ -34,6 +34,7 @@ jobs:
           - armv6
           - 386
           - armv5
+          - mips
           - s390x
     runs-on: ubuntu-latest
     steps:
@@ -58,6 +59,7 @@ jobs:
             armv7) BOOTLIN_ARCH="armv7-eabihf"; export GOARCH=arm GOARM=7 ;;
             armv6) BOOTLIN_ARCH="armv6-eabihf"; export GOARCH=arm GOARM=6 ;;
             armv5) BOOTLIN_ARCH="armv5-eabi"; export GOARCH=arm GOARM=5 ;;
+            mips) BOOTLIN_ARCH="mips32"; export GOARCH=mips GOMIPS=softfloat ;;
             386) BOOTLIN_ARCH="x86-i686" ;;
             s390x) BOOTLIN_ARCH="s390x-z13" ;;
           esac
@@ -114,6 +116,10 @@ jobs:
             wget -q ${Xray_URL}Xray-linux-arm32-v5.zip
             unzip Xray-linux-arm32-v5.zip
             rm -f Xray-linux-arm32-v5.zip
+          elif [ "${{ matrix.platform }}" == "mips" ]; then
+            wget -q ${Xray_URL}Xray-linux-mips32.zip
+            unzip Xray-linux-mips32.zip
+            rm -f Xray-linux-mips32.zip
           elif [ "${{ matrix.platform }}" == "s390x" ]; then
             wget -q ${Xray_URL}Xray-linux-s390x.zip
             unzip Xray-linux-s390x.zip
